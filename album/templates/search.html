@@ -1,41 +1,36 @@
-{% load bootstrap4 %}
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {% if title %}
-    <title>Snap - {{title}}</title>
-    {% else %}
-    <title>Snap</title>
-    {% endif %}
+{% extends 'base.html' %}
 
 
-    {% block styles %}
-    {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {% endblock styles %}
+{% block content %}
+<div class="container">
+    <div class="row">
 
+        {% if categories %}
+        <p class="test-italic">Found {{categories|length}} results of {{message}}</p>
+        {% else %}
+        <p class="text-italic">sorry but I did not find any matching results with the name {{message}}</p>
+        {% endif %}
 
-</head>
+    </div>
 
-<body>
-    {% include 'navbar.html' %}
+    <div class="row">
 
-    {% block content %}
+        
+        {% if categories %}
+        {% for category in categories %}
+        <div class="col-lg-6 col-sm-6 col-md-6 mt-5">
+            {{ block.super }}
+            <div class="card">
+                <img src="{{category.image_url.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{category.image_name}}</h5>
+                    <p class="card-text">{{category.image_description}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
 
-    {% endblock content %}
-
-
-    {% block scripts %}
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    {% endblock scripts %}
-    {% bootstrap_javascript %}
-</body>
-
-</html>
+    </div>
+</div>
+{% endblock content %}

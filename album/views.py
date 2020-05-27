@@ -19,3 +19,9 @@ def search(request):
         message = "Sorry but none of your images has such a term"
         return render(request, 'search.html', {'message': message})
     
+# def single_image(request, image_id):
+#     single_image_details = Image.get_single_image(image_id)
+
+#     # image_categories = Image.get_single_image_categories(image_id)
+    
+#     return render(request, 'single_image.html', {"single_image_details": single_image_details})
