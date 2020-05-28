@@ -1,4 +1,4 @@
-# Blog
+# SNAP
 
 An application that allows us to create delete update, retrieve info from a database 
 
