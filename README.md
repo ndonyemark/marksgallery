@@ -1,6 +1,6 @@
 # SNAP
 
-An application that allows us to create delete update, retrieve info from a database 
+A basic django application that allows us to upload images to the database
 
 ## Author
 
